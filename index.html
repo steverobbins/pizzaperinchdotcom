@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Pizza Per Inch - Pizza Value Calculator</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <style>
+            body{
+                margin: 200px auto 40px;
+                max-width: 85%;
+                line-height:1.6;
+                font-size:18px;
+                color:#444;
+                padding: 0 10px;
+                text-align: center;
+            }
+
+            header {
+                text-align: center;
+                font-size: 1em;
+            }
+
+            a {
+                text-decoration: none;
+            }
+
+            footer {
+                margin-top: 100px;
+                font-size: .6em
+            }
+        </style>
+    </head>
+    <body>
+        <header>
+            Calculate the value of your pizza
+        </header>
+        <content>
+            <form action="" method="get">
+                <label>
+                    Size of your pizza (in inches)
+                    <input type="text" name="size" title="Size (inches)" placeholder="20" value="20" />
+                </label>
+                <br />
+                <label>
+                    Price of your pizza
+                    <input type="text" name="price" title="Price" placeholder="32" value="32" />
+                </label>
+                <br />
+                <input type="submit" value="Calculate" />
+            </form>
+            <p id="value"></p>
+        </content>
+        <footer>
+            <a href="https://github.com/steverobbins/pizzaperinchdotcom">Github</a> | <a href="https://steverobbins.com/">&copy; <span id="year">2020</span> Steve Robbins</a>
+            <br />
+            Buy me some <a href="https://www.patreon.com/steve_robbins/" id="beg">pizza</a>.
+        </footer>
+        <script type="text/javascript">
+            var getVars = {};
+            if (document.location.toString().indexOf('?') !== -1) {
+                var query = document.location.toString().replace(/^.*?\?/, '').replace(/#.*$/, '').split('&');
+                for (var i = 0, l = query.length; i < l; i++) {
+                    var aux = decodeURIComponent(query[i]).split('=');
+                   getVars[aux[0]] = aux[1];
+                }
+            }
+            if (getVars['size'] && getVars['price']) {
+                document.getElementById('value').innerHTML = 'Value: $' + (getVars['price'] / (Math.PI*Math.pow((getVars['size'] * .5), 2))).toFixed(2) + ' per inch';
+            }
+        </script>
+    </body>
+</html>
