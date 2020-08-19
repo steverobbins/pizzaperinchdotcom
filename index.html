@@ -67,6 +67,7 @@
             if (getVars['size'] && getVars['price']) {
                 document.getElementById('value').innerHTML = 'Value: $' + (getVars['price'] / (Math.PI*Math.pow((getVars['size'] * .5), 2))).toFixed(2) + ' per inch';
             }
+            document.getElementById("year").innerHTML = new Date().getFullYear();
         </script>
     </body>
 </html>
